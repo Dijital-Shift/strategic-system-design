@@ -39,7 +39,7 @@ const Services = () => {
       <div className="h-0.5 bg-accent" />
 
       {/* System Expansion & Redesign */}
-      <section className="py-24 lg:py-32 bg-card">
+      <section className="py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl border-l border-accent pl-6">
             <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-8">
@@ -64,7 +64,7 @@ const Services = () => {
       <div className="h-0.5 bg-accent" />
 
       {/* What We Provide */}
-      <section className="py-24 lg:py-32 bg-background">
+      <section className="py-24 lg:py-32 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl border-l border-accent pl-6">
             <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-8">
