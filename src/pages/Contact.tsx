@@ -49,25 +49,28 @@ const Contact = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <section className="py-24 lg:py-32 border-b border-graphite">
+      <section className="py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
-          <h1 className="text-4xl md:text-5xl font-serif text-bone mb-8">
+          <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-8">
             Contact
           </h1>
-          <p className="text-lg text-silver max-w-2xl">
+          <p className="text-lg text-muted-foreground max-w-2xl">
             Request a Strategic Review
           </p>
-          <div className="w-16 h-px bg-deep-purple mt-8"></div>
+          <div className="w-16 h-px bg-accent mt-8"></div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="py-24 lg:py-32">
+      {/* Purple Accent Divider */}
+      <div className="h-px bg-accent" />
+
+      {/* Form Section - Graphite background */}
+      <section className="py-24 lg:py-32 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-xl">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-sm text-silver">
+                <Label htmlFor="name" className="text-sm text-muted-foreground">
                   Name
                 </Label>
                 <Input
@@ -78,12 +81,12 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="bg-background border-graphite text-bone focus:border-bone transition-colors"
+                  className="bg-background border-border text-foreground focus:border-foreground transition-colors"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm text-silver">
+                <Label htmlFor="email" className="text-sm text-muted-foreground">
                   Email
                 </Label>
                 <Input
@@ -94,12 +97,12 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="bg-background border-graphite text-bone focus:border-bone transition-colors"
+                  className="bg-background border-border text-foreground focus:border-foreground transition-colors"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="organization" className="text-sm text-silver">
+                <Label htmlFor="organization" className="text-sm text-muted-foreground">
                   Organization
                 </Label>
                 <Input
@@ -109,12 +112,12 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, organization: e.target.value })
                   }
-                  className="bg-background border-graphite text-bone focus:border-bone transition-colors"
+                  className="bg-background border-border text-foreground focus:border-foreground transition-colors"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-sm text-silver">
+                <Label htmlFor="message" className="text-sm text-muted-foreground">
                   Message
                 </Label>
                 <Textarea
@@ -125,7 +128,7 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="bg-background border-graphite text-bone focus:border-bone transition-colors resize-none"
+                  className="bg-background border-border text-foreground focus:border-foreground transition-colors resize-none"
                 />
               </div>
 
@@ -134,7 +137,7 @@ const Contact = () => {
                 disabled={isSubmitting}
                 variant="outline"
                 size="lg"
-                className="w-full border-graphite text-bone hover:bg-graphite hover:text-bone"
+                className="w-full border-border text-foreground hover:bg-card hover:text-foreground"
               >
                 {isSubmitting ? "Submitting..." : "Submit Inquiry"}
               </Button>
