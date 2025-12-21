@@ -16,7 +16,12 @@ const Home = () => {
               We work with organizations that have built something meaningful and now need their systems to match their ambition.
             </p>
             <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <Button asChild variant="outline" size="lg" className="border-border text-foreground hover:bg-secondary hover:text-foreground">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-accent text-foreground hover:bg-secondary hover:text-foreground"
+              >
                 <Link to="/contact">Request a Strategic Review</Link>
               </Button>
             </div>
@@ -25,7 +30,7 @@ const Home = () => {
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* Positioning Section - Graphite background for layering */}
       <section className="py-24 lg:py-32 bg-secondary">
@@ -39,7 +44,7 @@ const Home = () => {
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* Navigation Cards */}
       <section className="py-24 lg:py-32 bg-background">
@@ -47,7 +52,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link
               to="/about"
-              className="group p-8 border border-border bg-card hover:bg-secondary transition-colors duration-300"
+              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-colors duration-300"
             >
               <h3 className="text-xl font-serif text-foreground mb-3">About</h3>
               <p className="text-sm text-muted-foreground">
@@ -57,7 +62,7 @@ const Home = () => {
 
             <Link
               to="/services"
-              className="group p-8 border border-border bg-card hover:bg-secondary transition-colors duration-300"
+              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-colors duration-300"
             >
               <h3 className="text-xl font-serif text-foreground mb-3">Services</h3>
               <p className="text-sm text-muted-foreground">
@@ -67,7 +72,7 @@ const Home = () => {
 
             <Link
               to="/founder"
-              className="group p-8 border border-border bg-card hover:bg-secondary transition-colors duration-300"
+              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-colors duration-300"
             >
               <h3 className="text-xl font-serif text-foreground mb-3">Founder</h3>
               <p className="text-sm text-muted-foreground">

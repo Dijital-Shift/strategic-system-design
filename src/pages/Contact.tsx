@@ -57,17 +57,17 @@ const Contact = () => {
           <p className="text-lg text-muted-foreground max-w-2xl">
             Request a Strategic Review
           </p>
-          <div className="w-16 h-px bg-accent mt-8"></div>
+          <div className="w-16 h-1 bg-accent mt-8"></div>
         </div>
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* Form Section - Graphite background */}
       <section className="py-24 lg:py-32 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-xl">
+          <div className="max-w-xl border-l border-accent pl-6">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-sm text-muted-foreground">
@@ -137,7 +137,7 @@ const Contact = () => {
                 disabled={isSubmitting}
                 variant="outline"
                 size="lg"
-                className="w-full border-border text-foreground hover:bg-card hover:text-foreground"
+                className="w-full border-accent text-foreground hover:bg-card hover:text-foreground"
               >
                 {isSubmitting ? "Submitting..." : "Submit Inquiry"}
               </Button>

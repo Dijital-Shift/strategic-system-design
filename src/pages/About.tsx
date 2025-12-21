@@ -9,17 +9,17 @@ const About = () => {
           <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-8">
             About Dijital Shift
           </h1>
-          <div className="w-16 h-px bg-accent"></div>
+          <div className="w-16 h-1 bg-accent"></div>
         </div>
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* Main Content - Graphite background for layering */}
       <section className="py-24 lg:py-32 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl space-y-8">
+          <div className="max-w-3xl space-y-8 border-l border-accent pl-6">
             <p className="text-lg text-foreground leading-relaxed">
               Dijital Shift is a consulting practice focused on system design and strategic clarity.
             </p>
@@ -36,7 +36,7 @@ const About = () => {
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* Closing Section */}
       <section className="py-24 lg:py-32 bg-background">

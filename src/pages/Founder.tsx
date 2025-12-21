@@ -12,17 +12,17 @@ const Founder = () => {
           <p className="text-lg text-muted-foreground">
             Founder & Principal Strategist
           </p>
-          <div className="w-16 h-px bg-accent mt-8"></div>
+          <div className="w-16 h-1 bg-accent mt-8"></div>
         </div>
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* Main Content - Uses "I" voice */}
       <section className="py-24 lg:py-32 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl space-y-8">
+          <div className="max-w-3xl space-y-8 border-l border-accent pl-6">
             <p className="text-lg text-foreground leading-relaxed">
               I work at the intersection of systems, structure, and long-range ambition. My role is to help organizations see what their current systems cannot, and to design what comes next.
             </p>
@@ -35,7 +35,7 @@ const Founder = () => {
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* Closing Section */}
       <section className="py-24 lg:py-32 bg-background">

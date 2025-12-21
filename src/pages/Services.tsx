@@ -9,17 +9,17 @@ const Services = () => {
           <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-8">
             Services
           </h1>
-          <div className="w-16 h-px bg-accent"></div>
+          <div className="w-16 h-1 bg-accent"></div>
         </div>
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* How Engagements Begin */}
       <section className="py-24 lg:py-32 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl border-l border-accent pl-6">
             <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-8">
               How Engagements Begin
             </h2>
@@ -36,12 +36,12 @@ const Services = () => {
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* System Expansion & Redesign */}
       <section className="py-24 lg:py-32 bg-card">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl border-l border-accent pl-6">
             <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-8">
               System Expansion & Redesign
             </h2>
@@ -61,12 +61,12 @@ const Services = () => {
       </section>
 
       {/* Purple Accent Divider */}
-      <div className="h-px bg-accent" />
+      <div className="h-0.5 bg-accent" />
 
       {/* What We Provide */}
       <section className="py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl border-l border-accent pl-6">
             <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-8">
               What We Provide
             </h2>

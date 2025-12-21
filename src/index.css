@@ -33,7 +33,7 @@
     --muted: 0 0% 14%;
     --muted-foreground: 40 10% 65%;
 
-    --accent: 270 15% 15%;
+    --accent: 270 22% 22%;
     --accent-foreground: 40 30% 92%;
 
     --destructive: 0 62.8% 30.6%;
@@ -49,7 +49,7 @@
     --graphite: 0 0% 22%;
     --bone: 40 30% 92%;
     --silver: 0 0% 65%;
-    --deep-purple: 270 15% 15%;
+    --deep-purple: 270 22% 22%;
   }
 }
 
