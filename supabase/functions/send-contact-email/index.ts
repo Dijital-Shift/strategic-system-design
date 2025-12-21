@@ -8,6 +8,7 @@ const corsHeaders = {
 interface ContactRequest {
   name: string;
   email: string;
+  organization?: string;
   message: string;
 }
 
@@ -29,9 +30,9 @@ serve(async (req) => {
       );
     }
 
-    const { name, email, message }: ContactRequest = await req.json();
+    const { name, email, organization, message }: ContactRequest = await req.json();
 
-    console.log("Sending contact email from:", name, email);
+    console.log("Sending contact email from:", name, email, organization || "No organization");
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -40,13 +41,14 @@ serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Contact Form <onboarding@resend.dev>",
+        from: "Dijital Shift <onboarding@resend.dev>",
         to: [YOUR_EMAIL],
-        subject: `New Contact Form Message from ${name}`,
+        subject: `Strategic Review Request from ${name}${organization ? ` (${organization})` : ""}`,
         html: `
-          <h2>New Contact Form Submission</h2>
+          <h2>Strategic Review Request</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
+          ${organization ? `<p><strong>Organization:</strong> ${organization}</p>` : ""}
           <p><strong>Message:</strong></p>
           <p>${message.replace(/\n/g, "<br>")}</p>
         `,
