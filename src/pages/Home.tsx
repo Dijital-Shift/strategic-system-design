@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Home = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center bg-background relative overflow-hidden">
-        {/* Subtle accent glow in background */}
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-glow-pulse" />
+      {/* Hero Section with Background Image */}
+      <section className="min-h-[90vh] flex items-center relative overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-background/40" />
+        {/* Subtle accent glow */}
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-glow-pulse" />
         
         <div className="container mx-auto px-6 lg:px-12 py-24 relative z-10">
           <div className="max-w-4xl">
-            <p className="text-silver uppercase tracking-[0.3em] text-sm mb-6 animate-fade-in">
+            <p className="text-silver-highlight uppercase tracking-[0.3em] text-sm mb-6 animate-fade-in">
               Strategic System Design
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground leading-tight mb-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
