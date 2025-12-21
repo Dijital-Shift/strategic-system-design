@@ -71,7 +71,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link
               to="/about"
-              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-all duration-300 card-glow"
+              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-all duration-300 card-glow hover:scale-[1.02] hover:shadow-xl hover:shadow-accent/10 transform-gpu"
             >
               <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-accent transition-colors">About</h3>
               <p className="text-sm text-silver-dim group-hover:text-silver transition-colors">
@@ -81,7 +81,7 @@ const Home = () => {
 
             <Link
               to="/services"
-              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-all duration-300 card-glow"
+              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-all duration-300 card-glow hover:scale-[1.02] hover:shadow-xl hover:shadow-accent/10 transform-gpu"
             >
               <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-accent transition-colors">Services</h3>
               <p className="text-sm text-silver-dim group-hover:text-silver transition-colors">
@@ -91,7 +91,7 @@ const Home = () => {
 
             <Link
               to="/founder"
-              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-all duration-300 card-glow"
+              className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-all duration-300 card-glow hover:scale-[1.02] hover:shadow-xl hover:shadow-accent/10 transform-gpu"
             >
               <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-accent transition-colors">Founder</h3>
               <p className="text-sm text-silver-dim group-hover:text-silver transition-colors">
