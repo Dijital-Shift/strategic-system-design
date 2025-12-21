@@ -1,8 +1,6 @@
 import Layout from "@/components/Layout";
-
 const About = () => {
-  return (
-    <Layout>
+  return <Layout>
       {/* Header Section */}
       <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
         {/* Subtle accent glow */}
@@ -51,14 +49,10 @@ const About = () => {
             <p className="text-silver-highlight text-sm uppercase tracking-[0.2em] mb-6">
               Our Role
             </p>
-            <p className="text-lg text-silver leading-relaxed">
-              Our role is to clarify, design, and deliver, then step back. Execution remains with the organization. All system designs, logic, and intellectual property remain under our control unless expressly otherwise agreed in writing.
-            </p>
+            <p className="text-lg text-silver leading-relaxed">Our role is to clarify, design, and deliver, then step back. Execution remains with the organization. All system designs, logic, and intellectual property remain under our control unless otherwise expressed in writing.</p>
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default About;
