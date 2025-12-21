@@ -15,10 +15,10 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-sm">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="text-xl font-sans font-medium tracking-tight text-foreground">
+          <Link to="/" className="text-xl font-sans font-medium tracking-tight text-foreground hover:text-accent transition-colors">
             Dijital Shift
           </Link>
 
@@ -28,10 +28,10 @@ const Header = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`relative text-sm font-sans transition-colors duration-200 py-1 ${
+                className={`relative text-sm font-sans transition-all duration-300 py-1 ${
                   location.pathname === link.href
-                    ? "text-foreground after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-accent after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:shadow-[0_0_8px_hsl(var(--accent)/0.5)]"
+                    : "text-silver hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -41,7 +41,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground hover:text-accent transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -51,17 +51,17 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden border-t border-border py-6">
+          <nav className="md:hidden border-t border-border py-6 bg-card">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-sm font-sans py-2 transition-colors duration-200 ${
+                  className={`text-sm font-sans py-2 transition-all duration-300 ${
                     location.pathname === link.href
-                      ? "text-foreground border-l-2 border-accent pl-3"
-                      : "text-muted-foreground hover:text-foreground pl-3"
+                      ? "text-accent border-l-2 border-accent pl-3 shadow-[inset_0_0_10px_hsl(var(--accent)/0.1)]"
+                      : "text-silver hover:text-foreground pl-3"
                   }`}
                 >
                   {link.label}

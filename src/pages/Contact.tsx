@@ -49,28 +49,34 @@ const Contact = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <section className="py-24 lg:py-32 bg-background">
-        <div className="container mx-auto px-6 lg:px-12">
-          <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-8">
+      <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
+        {/* Subtle accent glow */}
+        <div className="absolute top-0 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <p className="text-silver uppercase tracking-[0.3em] text-sm mb-6">
+            Get In Touch
+          </p>
+          <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
             Contact
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl">
+          <p className="text-lg text-silver">
             Request a Strategic Review
           </p>
-          <div className="w-16 h-1 bg-accent mt-8"></div>
+          <div className="w-24 h-1 bg-accent accent-glow mt-8"></div>
         </div>
       </section>
 
-      {/* Purple Accent Divider */}
-      <div className="h-0.5 bg-accent" />
+      {/* Bold Gradient Divider */}
+      <div className="h-1 divider-gradient" />
 
-      {/* Form Section - Graphite background */}
-      <section className="py-24 lg:py-32 bg-secondary">
+      {/* Form Section - Elevated graphite */}
+      <section className="py-24 lg:py-32 bg-card">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-xl border-l border-accent pl-6">
+          <div className="max-w-xl border-l-2 border-accent pl-8">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-sm text-muted-foreground">
+                <Label htmlFor="name" className="text-sm text-silver">
                   Name
                 </Label>
                 <Input
@@ -81,12 +87,12 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="bg-background border-border text-foreground focus:border-foreground transition-colors"
+                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm text-muted-foreground">
+                <Label htmlFor="email" className="text-sm text-silver">
                   Email
                 </Label>
                 <Input
@@ -97,12 +103,12 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="bg-background border-border text-foreground focus:border-foreground transition-colors"
+                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="organization" className="text-sm text-muted-foreground">
+                <Label htmlFor="organization" className="text-sm text-silver">
                   Organization
                 </Label>
                 <Input
@@ -112,12 +118,12 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, organization: e.target.value })
                   }
-                  className="bg-background border-border text-foreground focus:border-foreground transition-colors"
+                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-sm text-muted-foreground">
+                <Label htmlFor="message" className="text-sm text-silver">
                   Message
                 </Label>
                 <Textarea
@@ -128,16 +134,15 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="bg-background border-border text-foreground focus:border-foreground transition-colors resize-none"
+                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                variant="outline"
                 size="lg"
-                className="w-full border-accent text-foreground hover:bg-card hover:text-foreground"
+                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 border-0 accent-glow transition-all duration-300"
               >
                 {isSubmitting ? "Submitting..." : "Submit Inquiry"}
               </Button>

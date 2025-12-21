@@ -42,6 +42,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          glow: "hsl(var(--accent-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -53,7 +54,10 @@ export default {
         },
         graphite: "hsl(var(--graphite))",
         bone: "hsl(var(--bone))",
-        silver: "hsl(var(--silver))",
+        silver: {
+          DEFAULT: "hsl(var(--silver))",
+          dim: "hsl(var(--silver-dim))",
+        },
         "deep-purple": "hsl(var(--deep-purple))",
       },
       borderRadius: {
@@ -74,11 +78,16 @@ export default {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.7" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out forwards",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
     },
   },
