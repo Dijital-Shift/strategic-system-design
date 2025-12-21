@@ -15,10 +15,10 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-graphite bg-background/95 backdrop-blur-sm">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="text-xl font-sans font-medium tracking-tight text-foreground">
+          <Link to="/" className="text-xl font-sans font-medium tracking-tight text-bone">
             Dijital Shift
           </Link>
 
@@ -30,8 +30,8 @@ const Header = () => {
                 to={link.href}
                 className={`text-sm font-sans transition-colors duration-200 ${
                   location.pathname === link.href
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-bone"
+                    : "text-silver hover:text-bone"
                 }`}
               >
                 {link.label}
@@ -41,7 +41,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-bone"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -51,7 +51,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden border-t border-border py-6">
+          <nav className="md:hidden border-t border-graphite py-6">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
@@ -60,8 +60,8 @@ const Header = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`text-sm font-sans py-2 transition-colors duration-200 ${
                     location.pathname === link.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-bone"
+                      : "text-silver hover:text-bone"
                   }`}
                 >
                   {link.label}
