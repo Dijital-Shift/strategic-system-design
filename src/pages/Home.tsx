@@ -30,13 +30,10 @@ const Home = () => {
         <div className="container mx-auto px-6 lg:px-12 py-24 relative z-10">
           <div className="max-w-4xl">
             <p className="text-silver-highlight uppercase tracking-[0.3em] text-sm mb-6 animate-fade-in">
-              Strategic System Design
-            </p>
+          </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground leading-tight mb-8 animate-fade-in" style={{
             animationDelay: "0.1s"
-          }}>
-              For Ambitious Organizations
-            </h1>
+          }}>Strategic System Design for Ambitious Organizations</h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-2xl animate-fade-in" style={{
             animationDelay: "0.2s"
           }}>
