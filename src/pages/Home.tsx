@@ -40,7 +40,7 @@ const Home = () => {
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-2xl animate-fade-in" style={{
             animationDelay: "0.2s"
           }}>
-              We work with organizations that have built something meaningful and now need their systems to match their ambition.
+              What exists today is rarely the full expression of what is possible. I work with systems as they are — and as they could become. 
             </p>
             <div className="animate-fade-in" style={{
             animationDelay: "0.3s"
@@ -63,10 +63,7 @@ const Home = () => {
             <p className="text-silver-highlight text-sm uppercase tracking-[0.2em] mb-6">
               The Approach
             </p>
-            <p className="text-lg md:text-xl text-foreground leading-relaxed">
-              What exists today is rarely the full expression of what is possible.
-I work with systems as they are — and as they could become.
-            </p>
+            <p className="text-lg md:text-xl text-foreground leading-relaxed">​We work with organizations that have built something meaningful and now need their systems to match their ambition. </p>
           </div>
         </div>
       </section>
