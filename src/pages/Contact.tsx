@@ -5,6 +5,16 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().min(1, "Email is required").email("Please enter a valid email"),
+  organization: z.string().max(100, "Organization must be less than 100 characters").optional(),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+});
+
+type FormErrors = Partial<Record<keyof z.infer<typeof contactSchema>, string>>;
 
 interface FloatingLabelInputProps {
   id: string;
@@ -13,6 +23,7 @@ interface FloatingLabelInputProps {
   required?: boolean;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: string;
 }
 
 const FloatingLabelInput = ({
@@ -22,6 +33,7 @@ const FloatingLabelInput = ({
   required = false,
   value,
   onChange,
+  error,
 }: FloatingLabelInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const isFloating = isFocused || value.length > 0;
@@ -36,7 +48,9 @@ const FloatingLabelInput = ({
         onChange={onChange}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all pt-5 pb-2"
+        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all pt-5 pb-2 ${
+          error ? "border-destructive" : ""
+        }`}
       />
       <label
         htmlFor={id}
@@ -48,6 +62,9 @@ const FloatingLabelInput = ({
       >
         {label}
       </label>
+      {error && (
+        <p className="text-destructive text-xs mt-1.5 animate-fade-in">{error}</p>
+      )}
     </div>
   );
 };
@@ -59,6 +76,7 @@ interface FloatingLabelTextareaProps {
   rows?: number;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  error?: string;
 }
 
 const FloatingLabelTextarea = ({
@@ -68,6 +86,7 @@ const FloatingLabelTextarea = ({
   rows = 6,
   value,
   onChange,
+  error,
 }: FloatingLabelTextareaProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const isFloating = isFocused || value.length > 0;
@@ -82,7 +101,9 @@ const FloatingLabelTextarea = ({
         onChange={onChange}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none pt-6 pb-2"
+        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none pt-6 pb-2 ${
+          error ? "border-destructive" : ""
+        }`}
       />
       <label
         htmlFor={id}
@@ -94,6 +115,9 @@ const FloatingLabelTextarea = ({
       >
         {label}
       </label>
+      {error && (
+        <p className="text-destructive text-xs mt-1.5 animate-fade-in">{error}</p>
+      )}
     </div>
   );
 };
@@ -101,6 +125,7 @@ const FloatingLabelTextarea = ({
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -108,8 +133,28 @@ const Contact = () => {
     message: "",
   });
 
+  const validateForm = (): boolean => {
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: FormErrors = {};
+      result.error.errors.forEach((err) => {
+        const field = err.path[0] as keyof FormErrors;
+        if (!fieldErrors[field]) {
+          fieldErrors[field] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return false;
+    }
+    setErrors({});
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) return;
+    
     setIsSubmitting(true);
 
     try {
@@ -125,6 +170,7 @@ const Contact = () => {
       });
 
       setFormData({ name: "", email: "", organization: "", message: "" });
+      setErrors({});
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
@@ -186,6 +232,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
+                error={errors.name}
               />
 
               <FloatingLabelInput
@@ -197,6 +244,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
+                error={errors.email}
               />
 
               <FloatingLabelInput
@@ -206,6 +254,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, organization: e.target.value })
                 }
+                error={errors.organization}
               />
 
               <FloatingLabelTextarea
@@ -217,13 +266,14 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
+                error={errors.message}
               />
 
               <Button
                 type="submit"
                 disabled={isSubmitting}
                 size="lg"
-                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 border-0 accent-glow transition-all duration-300"
+                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-0.5 border-0 accent-glow transition-all duration-300"
               >
                 {isSubmitting ? "Submitting..." : "Submit Inquiry"}
               </Button>
