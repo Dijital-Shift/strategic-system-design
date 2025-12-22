@@ -65,7 +65,7 @@ const Home = () => {
             </p>
             <p className="text-lg md:text-xl text-foreground leading-relaxed">
               What exists today is rarely the full expression of what is possible.
-I work with systems as they are and as they could become
+I work with systems as they are — and as they could become.
             </p>
           </div>
         </div>
