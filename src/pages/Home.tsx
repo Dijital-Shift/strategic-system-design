@@ -58,10 +58,7 @@ const Home = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl border-l-2 border-accent pl-8">
             <p className="text-silver-highlight text-sm uppercase tracking-[0.2em] mb-6">OUR APPROACH</p>
-            <p className="text-lg md:text-xl text-foreground leading-relaxed">​We work with organizations that have built something meaningful and now need their systems to match their ambition. 
-
-
- This work is for organizations willing to think beyond their original scope.  </p>
+            <p className="text-lg md:text-xl text-foreground leading-relaxed">​We work with organizations that have built something meaningful and now need their systems to match their ambition. This work is for those willing to think beyond their original scope.  </p>
           </div>
         </div>
       </section>
