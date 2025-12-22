@@ -58,12 +58,20 @@ const Footer = () => {
                 © {new Date().getFullYear()} Dijital Shift. All rights reserved.
               </p>
             </div>
-            <Link
-              to="/privacy-policy"
-              className="text-xs text-silver-dim hover:text-accent transition-colors"
-            >
-              Privacy Policy
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                to="/privacy-policy"
+                className="text-xs text-silver-dim hover:text-accent transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms-of-service"
+                className="text-xs text-silver-dim hover:text-accent transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>
