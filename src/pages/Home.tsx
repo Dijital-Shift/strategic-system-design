@@ -65,7 +65,7 @@ const Home = () => {
             <Link to="/about" className="group p-8 border border-border hover:border-accent bg-card hover:bg-secondary transition-all duration-300 card-glow hover:scale-[1.02] hover:shadow-xl hover:shadow-accent/10 transform-gpu">
               <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-accent transition-colors">About</h3>
               <p className="text-sm text-silver-dim group-hover:text-silver transition-colors">
-                Our practice and approach
+                Practice and approach
               </p>
             </Link>
 
