@@ -34,10 +34,13 @@ const Services = () => {
             </h2>
             <div className="space-y-6">
               <p className="text-lg text-silver leading-relaxed">
-                Organizations reach out when something no longer scales the way it should. There may be a stated goal or problem, but it is rarely the full picture.
+                Organizations reach out when something no longer scales the way it should. There may be a stated goal or challenge, but it is rarely the full picture.
               </p>
               <p className="text-lg text-silver leading-relaxed">
-                Our first step is diagnostic. We determine what is actually driving the friction, where decisions are constrained, and which parts of the system are misaligned. Only after that clarity is established does design begin.
+                In other cases, we initiate the conversation. This happens when we recognize an organization positioned for a larger evolution — one where new systems could open entirely different lanes, opportunities, or trajectories that were not originally in view.
+              </p>
+              <p className="text-lg text-silver leading-relaxed">
+                We are selective in both directions.
               </p>
             </div>
           </div>
