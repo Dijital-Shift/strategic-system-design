@@ -60,10 +60,22 @@ const Contact = () => {
           <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
             Contact
           </h1>
-          <p className="text-lg text-silver">
+          <p className="text-lg text-silver mb-8">
             Request a Strategic Review
           </p>
-          <div className="w-24 h-1 bg-accent accent-glow mt-8"></div>
+          <div className="w-24 h-1 bg-accent accent-glow mb-12"></div>
+          
+          <div className="max-w-2xl space-y-6 text-silver leading-relaxed">
+            <p>
+              This review is intended for organizations who believe their current direction is only a starting point.
+            </p>
+            <p>
+              It is a space to explore what could be built if structure, systems, and ambition were allowed to scale together. The goal is not improvement alone, but expansion into something larger and more deliberate than originally envisioned.
+            </p>
+            <p>
+              We tend to work with people who are less interested in incremental change and more interested in what could exist ten steps from now.
+            </p>
+          </div>
         </div>
       </section>
 
