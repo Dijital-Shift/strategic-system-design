@@ -51,11 +51,19 @@ const Footer = () => {
         </div>
 
         <div className="mt-16 pt-8 border-t border-border">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-0.5 bg-accent"></div>
-            <p className="text-xs text-silver-dim">
-              © {new Date().getFullYear()} Dijital Shift. All rights reserved.
-            </p>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-0.5 bg-accent"></div>
+              <p className="text-xs text-silver-dim">
+                © {new Date().getFullYear()} Dijital Shift. All rights reserved.
+              </p>
+            </div>
+            <Link
+              to="/privacy-policy"
+              className="text-xs text-silver-dim hover:text-accent transition-colors"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>
