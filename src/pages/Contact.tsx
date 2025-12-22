@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2 } from "lucide-react";
+import { Loader2, Check } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -118,6 +118,7 @@ const LabeledTextarea = ({
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState({
     name: "",
@@ -125,6 +126,13 @@ const Contact = () => {
     organization: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => setIsSuccess(false), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
 
   const validateForm = (): boolean => {
     const result = contactSchema.safeParse(formData);
@@ -157,6 +165,7 @@ const Contact = () => {
 
       if (error) throw error;
 
+      setIsSuccess(true);
       toast({
         title: "Inquiry Received",
         description: "We will be in touch.",
@@ -269,11 +278,20 @@ const Contact = () => {
 
               <Button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || isSuccess}
                 size="lg"
-                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-0.5 border-0 accent-glow transition-all duration-300"
+                className={`w-full border-0 transition-all duration-300 ${
+                  isSuccess 
+                    ? "bg-green-600 text-white hover:bg-green-600" 
+                    : "bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-0.5 accent-glow"
+                }`}
               >
-                {isSubmitting ? (
+                {isSuccess ? (
+                  <span className="flex items-center justify-center animate-scale-in">
+                    <Check className="mr-2 h-5 w-5" />
+                    Sent Successfully
+                  </span>
+                ) : isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Submitting...
