@@ -46,7 +46,7 @@ const LabeledInput = ({
         required={required}
         value={value}
         onChange={onChange}
-        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all ${
+        className={`bg-background border-border text-foreground focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none transition-all ${
           error ? "border-destructive" : ""
         }`}
       />
@@ -65,6 +65,7 @@ interface LabeledTextareaProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   error?: string;
+  maxLength?: number;
 }
 
 const LabeledTextarea = ({
@@ -75,19 +76,32 @@ const LabeledTextarea = ({
   value,
   onChange,
   error,
+  maxLength,
 }: LabeledTextareaProps) => {
+  const remaining = maxLength ? maxLength - value.length : null;
+  
   return (
     <div>
-      <label htmlFor={id} className="block text-sm text-silver mb-2">
-        {label}:
-      </label>
+      <div className="flex justify-between items-center mb-2">
+        <label htmlFor={id} className="text-sm text-silver">
+          {label}:
+        </label>
+        {maxLength && (
+          <span className={`text-xs transition-colors ${
+            remaining !== null && remaining < 100 ? "text-accent" : "text-silver/60"
+          }`}>
+            {remaining} characters remaining
+          </span>
+        )}
+      </div>
       <Textarea
         id={id}
         required={required}
         rows={rows}
         value={value}
         onChange={onChange}
-        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none ${
+        maxLength={maxLength}
+        className={`bg-background border-border text-foreground focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none transition-all resize-none ${
           error ? "border-destructive" : ""
         }`}
       />
@@ -243,6 +257,7 @@ const Contact = () => {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 error={errors.message}
+                maxLength={2000}
               />
 
               <Button
