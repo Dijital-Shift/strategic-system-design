@@ -49,7 +49,7 @@ const About = () => {
             <p className="text-silver-highlight text-sm uppercase tracking-[0.2em] mb-6">
               Our Role
             </p>
-            <p className="text-lg text-silver leading-relaxed">Our role is to clarify, design, and deliver, then step back. Execution remains with the organization. All system designs, logic, and intellectual property remain under our control unless otherwise expressed in writing.</p>
+            <p className="text-lg text-silver leading-relaxed">Our role is to clarify, design, deliver, then step back. Execution remains with the organization. All system designs, logic, and intellectual property remain under our control unless otherwise expressed in writing.</p>
           </div>
         </div>
       </section>
