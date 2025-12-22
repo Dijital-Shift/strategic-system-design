@@ -16,7 +16,7 @@ const contactSchema = z.object({
 
 type FormErrors = Partial<Record<keyof z.infer<typeof contactSchema>, string>>;
 
-interface FloatingLabelInputProps {
+interface LabeledInputProps {
   id: string;
   label: string;
   type?: string;
@@ -26,7 +26,7 @@ interface FloatingLabelInputProps {
   error?: string;
 }
 
-const FloatingLabelInput = ({
+const LabeledInput = ({
   id,
   label,
   type = "text",
@@ -34,34 +34,22 @@ const FloatingLabelInput = ({
   value,
   onChange,
   error,
-}: FloatingLabelInputProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const isFloating = isFocused || value.length > 0;
-
+}: LabeledInputProps) => {
   return (
-    <div className="relative">
+    <div>
+      <label htmlFor={id} className="block text-sm text-silver mb-2">
+        {label}:
+      </label>
       <Input
         id={id}
         type={type}
         required={required}
         value={value}
         onChange={onChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all pt-5 pb-2 ${
+        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all ${
           error ? "border-destructive" : ""
         }`}
       />
-      <label
-        htmlFor={id}
-        className={`absolute left-3 transition-all duration-200 ease-out pointer-events-none text-silver ${
-          isFloating
-            ? "top-1 text-xs"
-            : "top-1/2 -translate-y-1/2 text-sm"
-        }`}
-      >
-        {label}
-      </label>
       {error && (
         <p className="text-destructive text-xs mt-1.5 animate-fade-in">{error}</p>
       )}
@@ -69,7 +57,7 @@ const FloatingLabelInput = ({
   );
 };
 
-interface FloatingLabelTextareaProps {
+interface LabeledTextareaProps {
   id: string;
   label: string;
   required?: boolean;
@@ -79,7 +67,7 @@ interface FloatingLabelTextareaProps {
   error?: string;
 }
 
-const FloatingLabelTextarea = ({
+const LabeledTextarea = ({
   id,
   label,
   required = false,
@@ -87,34 +75,22 @@ const FloatingLabelTextarea = ({
   value,
   onChange,
   error,
-}: FloatingLabelTextareaProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const isFloating = isFocused || value.length > 0;
-
+}: LabeledTextareaProps) => {
   return (
-    <div className="relative">
+    <div>
+      <label htmlFor={id} className="block text-sm text-silver mb-2">
+        {label}:
+      </label>
       <Textarea
         id={id}
         required={required}
         rows={rows}
         value={value}
         onChange={onChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none pt-6 pb-2 ${
+        className={`bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none ${
           error ? "border-destructive" : ""
         }`}
       />
-      <label
-        htmlFor={id}
-        className={`absolute left-3 transition-all duration-200 ease-out pointer-events-none text-silver ${
-          isFloating
-            ? "top-2 text-xs"
-            : "top-4 text-sm"
-        }`}
-      >
-        {label}
-      </label>
       {error && (
         <p className="text-destructive text-xs mt-1.5 animate-fade-in">{error}</p>
       )}
@@ -224,7 +200,7 @@ const Contact = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-xl border-l-2 border-accent pl-8">
             <form onSubmit={handleSubmit} className="space-y-8">
-              <FloatingLabelInput
+              <LabeledInput
                 id="name"
                 label="Name"
                 required
@@ -235,7 +211,7 @@ const Contact = () => {
                 error={errors.name}
               />
 
-              <FloatingLabelInput
+              <LabeledInput
                 id="email"
                 label="Email"
                 type="email"
@@ -247,7 +223,7 @@ const Contact = () => {
                 error={errors.email}
               />
 
-              <FloatingLabelInput
+              <LabeledInput
                 id="organization"
                 label="Organization"
                 value={formData.organization}
@@ -257,7 +233,7 @@ const Contact = () => {
                 error={errors.organization}
               />
 
-              <FloatingLabelTextarea
+              <LabeledTextarea
                 id="message"
                 label="Message"
                 required
