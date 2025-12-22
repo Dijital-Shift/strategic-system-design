@@ -5,7 +5,98 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+
+interface FloatingLabelInputProps {
+  id: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const FloatingLabelInput = ({
+  id,
+  label,
+  type = "text",
+  required = false,
+  value,
+  onChange,
+}: FloatingLabelInputProps) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const isFloating = isFocused || value.length > 0;
+
+  return (
+    <div className="relative">
+      <Input
+        id={id}
+        type={type}
+        required={required}
+        value={value}
+        onChange={onChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all pt-5 pb-2"
+      />
+      <label
+        htmlFor={id}
+        className={`absolute left-3 transition-all duration-200 ease-out pointer-events-none text-silver ${
+          isFloating
+            ? "top-1 text-xs"
+            : "top-1/2 -translate-y-1/2 text-sm"
+        }`}
+      >
+        {label}
+      </label>
+    </div>
+  );
+};
+
+interface FloatingLabelTextareaProps {
+  id: string;
+  label: string;
+  required?: boolean;
+  rows?: number;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+const FloatingLabelTextarea = ({
+  id,
+  label,
+  required = false,
+  rows = 6,
+  value,
+  onChange,
+}: FloatingLabelTextareaProps) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const isFloating = isFocused || value.length > 0;
+
+  return (
+    <div className="relative">
+      <Textarea
+        id={id}
+        required={required}
+        rows={rows}
+        value={value}
+        onChange={onChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none pt-6 pb-2"
+      />
+      <label
+        htmlFor={id}
+        className={`absolute left-3 transition-all duration-200 ease-out pointer-events-none text-silver ${
+          isFloating
+            ? "top-2 text-xs"
+            : "top-4 text-sm"
+        }`}
+      >
+        {label}
+      </label>
+    </div>
+  );
+};
 
 const Contact = () => {
   const { toast } = useToast();
@@ -53,7 +144,7 @@ const Contact = () => {
         {/* Subtle accent glow */}
         <div className="absolute top-0 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
         
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="container mx-auto px-6 lg:px-12 relative z-10 animate-fade-in">
           <p className="text-silver uppercase tracking-[0.3em] text-sm mb-6">
             Get In Touch
           </p>
@@ -87,68 +178,46 @@ const Contact = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-xl border-l-2 border-accent pl-8">
             <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-sm text-silver">
-                  Name
-                </Label>
-                <Input
-                  id="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all"
-                />
-              </div>
+              <FloatingLabelInput
+                id="name"
+                label="Name"
+                required
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+              />
 
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm text-silver">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all"
-                />
-              </div>
+              <FloatingLabelInput
+                id="email"
+                label="Email"
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
 
-              <div className="space-y-2">
-                <Label htmlFor="organization" className="text-sm text-silver">
-                  Organization
-                </Label>
-                <Input
-                  id="organization"
-                  type="text"
-                  value={formData.organization}
-                  onChange={(e) =>
-                    setFormData({ ...formData, organization: e.target.value })
-                  }
-                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all"
-                />
-              </div>
+              <FloatingLabelInput
+                id="organization"
+                label="Organization"
+                value={formData.organization}
+                onChange={(e) =>
+                  setFormData({ ...formData, organization: e.target.value })
+                }
+              />
 
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-sm text-silver">
-                  Message
-                </Label>
-                <Textarea
-                  id="message"
-                  required
-                  rows={6}
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="bg-background border-border text-foreground focus:border-accent focus:ring-accent/20 transition-all resize-none"
-                />
-              </div>
+              <FloatingLabelTextarea
+                id="message"
+                label="Message"
+                required
+                rows={6}
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+              />
 
               <Button
                 type="submit"
