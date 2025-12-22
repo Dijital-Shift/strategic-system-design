@@ -1,26 +1,15 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
+
 const Home = () => {
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll, {
-      passive: true
-    });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   return <Layout>
       {/* Hero Section with Background Image */}
       <section className="min-h-[90vh] flex items-center relative overflow-hidden">
-        {/* Background Image with Parallax */}
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110" style={{
-        backgroundImage: `url(${heroBg})`,
-        transform: `translateY(${scrollY * 0.4}px) scale(1.1)`
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+        backgroundImage: `url(${heroBg})`
       }} />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-background/40" />
