@@ -86,7 +86,7 @@ const Services = () => {
               What We Provide
             </h2>
             <div className="space-y-6">
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lg text-silver leading-relaxed">
                 We provide system rationale that can be tested, verified, and defended.
               </p>
               <p className="text-lg text-silver leading-relaxed">
