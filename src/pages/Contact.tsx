@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Loader2 } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -82,18 +83,9 @@ const LabeledTextarea = ({
   
   return (
     <div>
-      <div className="flex justify-between items-center mb-2">
-        <label htmlFor={id} className="text-sm text-silver">
-          {label}:
-        </label>
-        {maxLength && (
-          <span className={`text-xs transition-colors ${
-            remaining !== null && remaining < 100 ? "text-accent" : "text-silver/60"
-          }`}>
-            {remaining} characters remaining
-          </span>
-        )}
-      </div>
+      <label htmlFor={id} className="block text-sm text-silver mb-2">
+        {label}:
+      </label>
       <Textarea
         id={id}
         required={required}
@@ -105,9 +97,20 @@ const LabeledTextarea = ({
           error ? "border-destructive" : ""
         }`}
       />
-      {error && (
-        <p className="text-destructive text-xs mt-1.5 animate-fade-in">{error}</p>
-      )}
+      <div className="flex justify-between items-center mt-1.5">
+        {error ? (
+          <p className="text-destructive text-xs animate-fade-in">{error}</p>
+        ) : (
+          <span />
+        )}
+        {maxLength && (
+          <span className={`text-xs transition-colors ${
+            remaining !== null && remaining < 100 ? "text-accent" : "text-silver/60"
+          }`}>
+            {remaining} characters remaining
+          </span>
+        )}
+      </div>
     </div>
   );
 };
@@ -219,9 +222,10 @@ const Contact = () => {
                 label="Name"
                 required
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, name: e.target.value });
+                  if (errors.name) setErrors({ ...errors, name: undefined });
+                }}
                 error={errors.name}
               />
 
@@ -231,9 +235,10 @@ const Contact = () => {
                 type="email"
                 required
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                  if (errors.email) setErrors({ ...errors, email: undefined });
+                }}
                 error={errors.email}
               />
 
@@ -241,9 +246,10 @@ const Contact = () => {
                 id="organization"
                 label="Organization"
                 value={formData.organization}
-                onChange={(e) =>
-                  setFormData({ ...formData, organization: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, organization: e.target.value });
+                  if (errors.organization) setErrors({ ...errors, organization: undefined });
+                }}
                 error={errors.organization}
               />
 
@@ -253,9 +259,10 @@ const Contact = () => {
                 required
                 rows={6}
                 value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, message: e.target.value });
+                  if (errors.message) setErrors({ ...errors, message: undefined });
+                }}
                 error={errors.message}
                 maxLength={2000}
               />
@@ -266,7 +273,14 @@ const Contact = () => {
                 size="lg"
                 className="w-full bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-0.5 border-0 accent-glow transition-all duration-300"
               >
-                {isSubmitting ? "Submitting..." : "Submit Inquiry"}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Inquiry"
+                )}
               </Button>
             </form>
           </div>
