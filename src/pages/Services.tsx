@@ -86,7 +86,7 @@ const Services = () => {
                 We provide system rationale that can be tested, verified, and defended.
               </p>
               <p className="text-lg text-silver leading-relaxed">
-                This rationale explains why a system should exist, how it should function, and what changes once it is in place. It allows leadership teams to understand the logic behind decisions, align execution, and avoid repeating the same structural mistakes as the organization grows.
+                This rationale explains why a system should exist, how it functions, and what changes once it is in place. It allows leadership teams to understand the logic behind decisions, align execution, and avoid repeating the same structural mistakes as the organization grows.
               </p>
               <p className="text-lg text-silver leading-relaxed">
                 Without clear system rationale, organizations rely on intuition and precedent. With it, they operate with intent.
