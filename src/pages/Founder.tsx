@@ -62,7 +62,7 @@ const Founder = () => {
       {/* Scripture Verse Section */}
       <section className="py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center animate-fade-settle">
             <p className="text-xl md:text-2xl font-serif italic text-silver-highlight leading-relaxed mb-6">
               "For the vision is yet for an appointed time, but at the end it shall speak, and not lie: though it tarry, wait for it; because it will surely come, it will not tarry."
             </p>
