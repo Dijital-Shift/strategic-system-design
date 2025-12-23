@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { motion } from "framer-motion";
 
 const Founder = () => {
   return (
@@ -62,14 +63,20 @@ const Founder = () => {
       {/* Scripture Verse Section */}
       <section className="py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto text-center animate-fade-settle">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
             <p className="text-xl md:text-2xl font-serif italic text-silver-highlight leading-relaxed mb-6">
               "For the vision is yet for an appointed time, but at the end it shall speak, and not lie: though it tarry, wait for it; because it will surely come, it will not tarry."
             </p>
             <p className="text-sm text-silver uppercase tracking-[0.2em]">
               Habakkuk 2:3 (KJV)
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
     </Layout>
