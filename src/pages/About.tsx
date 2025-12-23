@@ -25,15 +25,15 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl space-y-8 border-l-2 border-accent pl-8">
             <p className="text-lg text-silver leading-relaxed">
-              Dijital Shift is a consulting practice focused on system design and strategic clarity.
+              Dijital Shift is a strategic advisory practice focused on system-level clarity and long-term alignment.
             </p>
 
             <p className="text-lg text-silver leading-relaxed">
-              We work with organizations that understand their systems are not perfect and are committed to continuous improvement. We are brought in to assess existing operations, surface unseen constraints, and design refined systems that hold up under real-world conditions.
+              We work with organizations that recognize their systems are imperfect and are willing to confront the constraints shaping their outcomes. Our role is to examine operations in totality, surface leverage points, and guide decisions that hold under real-world conditions.
             </p>
 
             <p className="text-lg text-silver leading-relaxed">
-              Engagements are selective. We do not provide generalized consulting across competing interests, nor do we operate as a volume advisory firm. Work is prioritized where alignment exists and where long-term value can be built without compromising incentive structure.
+              Engagements are selective by design. We do not operate as a volume consultancy, nor do we provide generalized advisory services across competing interests. Work is pursued only where alignment exists and where enduring value can be built without compromising incentives or ownership.
             </p>
           </div>
         </div>
@@ -49,7 +49,12 @@ const About = () => {
             <p className="text-silver-highlight text-sm uppercase tracking-[0.2em] mb-6">
               Our Role
             </p>
-            <p className="text-lg text-silver leading-relaxed">Our role is to clarify, design, deliver, then step back. Execution remains with the organization. All system designs, logic, and intellectual property remain under our control unless otherwise expressed in writing.</p>
+            <p className="text-lg text-silver leading-relaxed mb-6">
+              We provide clarity and direction. Execution remains with the organization.
+            </p>
+            <p className="text-lg text-silver leading-relaxed">
+              All system logic, frameworks, and intellectual property developed through our work remain under our control unless otherwise defined in writing.
+            </p>
           </div>
         </div>
       </section>
