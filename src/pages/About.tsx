@@ -24,7 +24,7 @@ const About = () => {
       <section className="py-24 lg:py-32 bg-card">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl space-y-8 border-l-2 border-accent pl-8">
-            <p className="text-lg text-foreground leading-relaxed">
+            <p className="text-lg text-silver leading-relaxed">
               Dijital Shift is a consulting practice focused on system design and strategic clarity.
             </p>
 
