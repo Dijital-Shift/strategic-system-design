@@ -1,8 +1,6 @@
 import Layout from "@/components/Layout";
-
 const Services = () => {
-  return (
-    <Layout>
+  return <Layout>
       {/* Header Section */}
       <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
         {/* Subtle accent glow */}
@@ -79,9 +77,7 @@ const Services = () => {
       <section className="py-24 lg:py-32 bg-card">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl border-l-2 border-accent pl-8">
-            <p className="text-silver-highlight text-sm uppercase tracking-[0.2em] mb-4">
-              Deliverables
-            </p>
+            
             <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-8">
               What We Provide
             </h2>
@@ -99,8 +95,6 @@ const Services = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Services;
