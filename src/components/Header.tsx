@@ -18,26 +18,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-sm">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
-            <span className="relative flex items-center justify-center w-8 h-8 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)]">
-              {/* Subtle webbing lines */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 32 32">
-                {/* Radial lines */}
-                <line x1="16" y1="2" x2="16" y2="30" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.45" />
-                <line x1="2" y1="16" x2="30" y2="16" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.45" />
-                <line x1="5" y1="5" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.35" />
-                <line x1="27" y1="5" x2="5" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.35" />
-                {/* Concentric rings */}
-                <circle cx="16" cy="16" r="4" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.3" />
-                <circle cx="16" cy="16" r="8" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.25" />
-                <circle cx="16" cy="16" r="12" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.2" />
-              </svg>
-              <span className="absolute inset-0 rounded-full border-[1.5px] border-accent"></span>
-              <span className="relative text-accent text-base font-sans font-semibold tracking-tight">DS</span>
-            </span>
-            <span className="text-xl font-sans font-medium tracking-tight text-foreground">
-              Dijital Shift
-            </span>
+          <Link to="/" className="text-xl font-sans font-medium tracking-tight text-foreground hover:text-accent transition-colors">
+            Dijital Shift
           </Link>
 
           {/* Desktop Navigation */}
