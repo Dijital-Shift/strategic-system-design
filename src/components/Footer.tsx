@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { Download } from "lucide-react";
+import HolySieve from "./HolySieve";
+import { downloadSvgAsPng } from "@/utils/downloadSvg";
 
 const Footer = () => {
+  const sieveRef = useRef<SVGSVGElement>(null);
+
+  const handleDownload = () => {
+    if (sieveRef.current) {
+      downloadSvgAsPng(sieveRef.current, "holy-sieve.png");
+    }
+  };
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="container mx-auto px-6 lg:px-12 py-16">
@@ -28,6 +40,18 @@ const Footer = () => {
             <p className="text-sm text-silver leading-relaxed">
               Strategic System Design for Ambitious Organizations
             </p>
+            
+            {/* Holy Sieve with download */}
+            <div className="mt-6 flex items-end gap-3">
+              <HolySieve ref={sieveRef} />
+              <button
+                onClick={handleDownload}
+                className="p-2 text-silver-dim hover:text-accent transition-colors rounded-md hover:bg-accent/10"
+                title="Download as PNG"
+              >
+                <Download size={18} />
+              </button>
+            </div>
           </div>
 
           <div>
