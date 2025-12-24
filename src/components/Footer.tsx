@@ -6,9 +6,25 @@ const Footer = () => {
       <div className="container mx-auto px-6 lg:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <p className="text-sm font-sans font-medium text-foreground mb-4">
-              Dijital Shift
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              {/* DS Logo - Aesthetic only */}
+              <span className="relative flex items-center justify-center w-8 h-8">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 32 32">
+                  <line x1="16" y1="2" x2="16" y2="30" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.45" />
+                  <line x1="2" y1="16" x2="30" y2="16" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.45" />
+                  <line x1="5" y1="5" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.35" />
+                  <line x1="27" y1="5" x2="5" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.35" />
+                  <circle cx="16" cy="16" r="4" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.3" />
+                  <circle cx="16" cy="16" r="8" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.25" />
+                  <circle cx="16" cy="16" r="12" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.2" />
+                </svg>
+                <span className="absolute inset-0 rounded-full border-[1.5px] border-accent"></span>
+                <span className="relative text-accent text-base font-sans font-semibold tracking-tight">DS</span>
+              </span>
+              <span className="text-xl font-sans font-medium tracking-tight text-foreground">
+                Dijital Shift
+              </span>
+            </div>
             <p className="text-sm text-silver leading-relaxed">
               Strategic System Design for Ambitious Organizations
             </p>
