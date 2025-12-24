@@ -19,13 +19,17 @@ const Header = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="relative flex items-center justify-center w-10 h-10 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)]">
+            <span className="relative flex items-center justify-center w-8 h-8 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)]">
               {/* Subtle webbing lines */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 40 40">
-                <line x1="20" y1="4" x2="20" y2="36" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.2" />
-                <line x1="4" y1="20" x2="36" y2="20" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.2" />
-                <line x1="8" y1="8" x2="32" y2="32" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.15" />
-                <line x1="32" y1="8" x2="8" y2="32" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.15" />
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 32 32">
+                <line x1="16" y1="2" x2="16" y2="30" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.3" />
+                <line x1="2" y1="16" x2="30" y2="16" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.3" />
+                <line x1="5" y1="5" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.25" />
+                <line x1="27" y1="5" x2="5" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.25" />
+                <line x1="16" y1="2" x2="5" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.2" />
+                <line x1="16" y1="2" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.2" />
+                <line x1="2" y1="16" x2="27" y2="5" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.2" />
+                <line x1="2" y1="16" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.2" />
               </svg>
               <span className="absolute inset-0 rounded-full border-[1.5px] border-accent"></span>
               <span className="relative text-accent text-base font-sans font-semibold tracking-tight">DS</span>
