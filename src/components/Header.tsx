@@ -18,8 +18,13 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-sm">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="text-xl font-sans font-medium tracking-tight text-foreground hover:text-accent transition-colors">
-            Dijital Shift
+          <Link to="/" className="flex items-center gap-3 group">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full border-[1.5px] border-accent text-accent text-xs font-sans font-semibold tracking-tight transition-all duration-300 group-hover:shadow-[0_0_12px_hsl(var(--accent)/0.5)]">
+              DS
+            </span>
+            <span className="text-xl font-sans font-medium tracking-tight text-foreground group-hover:text-accent transition-colors">
+              Dijital Shift
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
