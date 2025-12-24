@@ -19,10 +19,11 @@ const Header = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="flex items-center justify-center w-8 h-8 rounded-full border-[1.5px] border-accent text-accent text-xs font-sans font-semibold tracking-tight transition-all duration-300 group-hover:shadow-[0_0_12px_hsl(var(--accent)/0.5)]">
-              DS
+            <span className="relative flex items-center justify-center w-8 h-8 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)]">
+              <span className="absolute inset-0 rounded-full border-[1.5px] border-accent"></span>
+              <span className="text-accent text-sm font-sans font-semibold tracking-tight">DS</span>
             </span>
-            <span className="text-xl font-sans font-medium tracking-tight text-foreground group-hover:text-accent transition-colors">
+            <span className="text-xl font-sans font-medium tracking-tight text-foreground">
               Dijital Shift
             </span>
           </Link>
