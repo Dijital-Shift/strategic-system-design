@@ -23,14 +23,10 @@ const Header = () => {
               {/* Subtle webbing lines */}
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 32 32">
                 {/* Radial lines */}
-                <line x1="16" y1="2" x2="16" y2="30" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.5" />
-                <line x1="2" y1="16" x2="30" y2="16" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.5" />
-                <line x1="5" y1="5" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.4" />
-                <line x1="27" y1="5" x2="5" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.4" />
-                <line x1="16" y1="2" x2="5" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.35" />
-                <line x1="16" y1="2" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.35" />
-                <line x1="2" y1="16" x2="27" y2="5" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.35" />
-                <line x1="2" y1="16" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.5" opacity="0.35" />
+                <line x1="16" y1="2" x2="16" y2="30" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.45" />
+                <line x1="2" y1="16" x2="30" y2="16" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.45" />
+                <line x1="5" y1="5" x2="27" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.35" />
+                <line x1="27" y1="5" x2="5" y2="27" stroke="hsl(var(--accent))" strokeWidth="0.6" opacity="0.35" />
                 {/* Concentric rings */}
                 <circle cx="16" cy="16" r="4" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.3" />
                 <circle cx="16" cy="16" r="8" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" opacity="0.25" />
