@@ -1,40 +1,29 @@
-import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Check } from "lucide-react";
-import { z } from "zod";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().min(1, "Email is required").email("Please enter a valid email"),
-  organization: z.string().max(100, "Organization must be less than 100 characters").optional(),
-  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
-});
-
-type FormErrors = Partial<Record<keyof z.infer<typeof contactSchema>, string>>;
+// Replace with your Formspree form ID from https://formspree.io/
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 interface LabeledInputProps {
   id: string;
+  name: string;
   label: string;
   type?: string;
   required?: boolean;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  error?: string;
+  maxLength?: number;
 }
 
 const LabeledInput = ({
   id,
+  name,
   label,
   type = "text",
   required = false,
-  value,
-  onChange,
-  error,
+  maxLength,
 }: LabeledInputProps) => {
   return (
     <div>
@@ -43,44 +32,33 @@ const LabeledInput = ({
       </label>
       <Input
         id={id}
+        name={name}
         type={type}
         required={required}
-        value={value}
-        onChange={onChange}
-        className={`bg-background border-border text-foreground focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none transition-all ${
-          error ? "border-destructive" : ""
-        }`}
+        maxLength={maxLength}
+        className="bg-background border-border text-foreground focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none transition-all"
       />
-      {error && (
-        <p className="text-destructive text-xs mt-1.5 animate-fade-in">{error}</p>
-      )}
     </div>
   );
 };
 
 interface LabeledTextareaProps {
   id: string;
+  name: string;
   label: string;
   required?: boolean;
   rows?: number;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  error?: string;
   maxLength?: number;
 }
 
 const LabeledTextarea = ({
   id,
+  name,
   label,
   required = false,
   rows = 6,
-  value,
-  onChange,
-  error,
   maxLength,
 }: LabeledTextareaProps) => {
-  const remaining = maxLength ? maxLength - value.length : null;
-  
   return (
     <div>
       <label htmlFor={id} className="block text-sm text-silver mb-2">
@@ -88,98 +66,49 @@ const LabeledTextarea = ({
       </label>
       <Textarea
         id={id}
+        name={name}
         required={required}
         rows={rows}
-        value={value}
-        onChange={onChange}
         maxLength={maxLength}
-        className={`bg-background border-border text-foreground focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none transition-all resize-none ${
-          error ? "border-destructive" : ""
-        }`}
+        className="bg-background border-border text-foreground focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none transition-all resize-none"
       />
-      <div className="flex justify-between items-center mt-1.5">
-        {error ? (
-          <p className="text-destructive text-xs animate-fade-in">{error}</p>
-        ) : (
-          <span />
-        )}
-        {maxLength && (
-          <span className={`text-xs transition-colors ${
-            remaining !== null && remaining < 100 ? "text-accent" : "text-silver/60"
-          }`}>
-            {remaining} characters remaining
-          </span>
-        )}
-      </div>
     </div>
   );
 };
 
 const Contact = () => {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    organization: "",
-    message: "",
-  });
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (isSuccess) {
-      const timer = setTimeout(() => setIsSuccess(false), 2500);
-      return () => clearTimeout(timer);
-    }
-  }, [isSuccess]);
-
-  const validateForm = (): boolean => {
-    const result = contactSchema.safeParse(formData);
-    if (!result.success) {
-      const fieldErrors: FormErrors = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof FormErrors;
-        if (!fieldErrors[field]) {
-          fieldErrors[field] = err.message;
-        }
-      });
-      setErrors(fieldErrors);
-      return false;
-    }
-    setErrors({});
-    return true;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    if (!validateForm()) return;
-    
     setIsSubmitting(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
         body: formData,
+        headers: {
+          Accept: "application/json",
+        },
       });
 
-      if (error) throw error;
-
-      setIsSuccess(true);
-      toast({
-        title: "Inquiry Received",
-        description: "We will be in touch.",
-      });
-
-      setFormData({ name: "", email: "", organization: "", message: "" });
-      setErrors({});
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast({
-        title: "Submission Error",
-        description: "Please try again or contact us directly.",
-        variant: "destructive",
-      });
+      if (response.ok) {
+        setIsSuccess(true);
+        form.reset();
+        setTimeout(() => setIsSuccess(false), 3000);
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || "Form submission failed");
+      }
+    } catch (err) {
+      setError("There was an error submitting the form. Please try again.");
+      console.error("Form submission error:", err);
     } finally {
       setIsSubmitting(false);
     }
@@ -225,56 +154,48 @@ const Contact = () => {
       <section className="py-24 lg:py-32 bg-card">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-xl border-l-2 border-accent pl-8">
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form 
+              onSubmit={handleSubmit}
+              action={FORMSPREE_ENDPOINT}
+              method="POST"
+              className="space-y-8"
+            >
               <LabeledInput
                 id="name"
+                name="name"
                 label="Name"
                 required
-                value={formData.name}
-                onChange={(e) => {
-                  setFormData({ ...formData, name: e.target.value });
-                  if (errors.name) setErrors({ ...errors, name: undefined });
-                }}
-                error={errors.name}
+                maxLength={100}
               />
 
               <LabeledInput
                 id="email"
+                name="email"
                 label="Email"
                 type="email"
                 required
-                value={formData.email}
-                onChange={(e) => {
-                  setFormData({ ...formData, email: e.target.value });
-                  if (errors.email) setErrors({ ...errors, email: undefined });
-                }}
-                error={errors.email}
+                maxLength={255}
               />
 
               <LabeledInput
                 id="organization"
+                name="organization"
                 label="Organization"
-                value={formData.organization}
-                onChange={(e) => {
-                  setFormData({ ...formData, organization: e.target.value });
-                  if (errors.organization) setErrors({ ...errors, organization: undefined });
-                }}
-                error={errors.organization}
+                maxLength={100}
               />
 
               <LabeledTextarea
                 id="message"
+                name="message"
                 label="Message"
                 required
                 rows={6}
-                value={formData.message}
-                onChange={(e) => {
-                  setFormData({ ...formData, message: e.target.value });
-                  if (errors.message) setErrors({ ...errors, message: undefined });
-                }}
-                error={errors.message}
                 maxLength={2000}
               />
+
+              {error && (
+                <p className="text-destructive text-sm">{error}</p>
+              )}
 
               <Button
                 type="submit"
