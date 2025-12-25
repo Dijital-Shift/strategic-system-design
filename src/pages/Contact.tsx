@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Check } from "lucide-react";
 
 // Replace with your Formspree form ID from https://formspree.io/
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwvkeqrk";
 
 interface LabeledInputProps {
   id: string;
